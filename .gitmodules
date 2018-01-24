@@ -1,3 +1,12 @@
 [submodule "reveal.js"]
 	path = reveal.js
 	url = https://github.com/hakimel/reveal.js.git
+[submodule "repos/Lipsum"]
+	path = repos/Lipsum
+	url = https://github.com/xrubioj/swifty-framework-Lipsum.git
+[submodule "repos/SampleLipsumApp"]
+	path = repos/SampleLipsumApp
+	url = https://github.com/xrubioj/swifty-framework-SampleLipsumApp.git
+[submodule "repos/private-cocoapods-repo"]
+	path = repos/private-cocoapods-repo
+	url = https://github.com/xrubioj/swifty-framework-private-repo.git
