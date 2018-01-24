@@ -1,0 +1,476 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Swifty Framework Development for pragmatic developers</title>
+
+		<link rel="stylesheet" href="reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn-nohighlight.css">
+
+		<!-- FontAwesome http://fontawesome.io/examples/ and http://fontawesome.io/icons/ -->
+		<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+
+		<style>
+			.reveal .overlay-title {
+				position: absolute;
+				left: 1.5em;
+				bottom: 1.5em;
+				font-size: 12pt;
+				color: #bbbbbb;
+			}
+
+			.reveal h1,
+			.reveal h2 {
+				text-transform: none !important;
+				font-variant-caps: small-caps !important;
+			}
+			.reveal .small-column-left {
+				float: left;
+				width: 30%;
+			}
+			.reveal .big-column-right {
+				float: left;
+				width: 58%;
+				padding-left: 5% !important;
+			}
+			.reveal .big-column-left {
+				float: left;
+				width: 68%;
+			}
+			.reveal .small-column-right {
+				float: left;
+				width: 20%;
+				padding-left: 5% !important;
+				text-align: left;
+			}
+			.reveal .left {
+				text-align: left;
+				width: 90%;
+			}
+			.reveal .join-with-previous {
+				margin-top: -0.8em;
+			}
+
+			.reveal b {
+				color: #42affa;
+			}
+			.reveal code.inline {
+				background: #3f3f3f;
+				color: #dcdcdc;
+				font-size: 0.9em;
+			}
+		</style>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section style="font-size: 0.8em">
+					<h1>Swifty Framework Development</h1>
+					<h2>for pragmatic developers</h2>
+					<p>Xavier Rubio Jansana</p>
+					<p style="font-size: 0.8em">
+						<a href="https://twitter.com/teknik_tdr"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;@teknik_tdr</a><br>
+						<a href="https://xrubio.com"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;https://xrubio.com</a><br>
+						<a href="https://github.com/xrubioj/"><i class="fa fa-github" aria-hidden="true"></i>&nbsp;https://github.com/xrubioj/</a>
+					</p>
+				</section>
+
+				<section>
+					<h1>What?</h1>
+					<p class="fragment">A framework is a collection of...</p>
+					<ul>
+						<li class="fragment">...code</li>
+						<li class="fragment">...assets</li>
+						<li class="fragment">...images</li>
+						<li class="fragment">...more</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Framework !=<br>static library</h1>
+					<ul>
+						<li class="fragment">Dynamic vs static</li>
+						<li class="fragment">Bundle vs just code</li>
+					</ul>
+				</section>
+
+				<section data-background-image-disabled="https://media.giphy.com/media/144XNwR360jPX2/giphy.webp">
+					<h1>Pros</h1>
+					<ul>
+						<li class="fragment">Allows reutilization</li>
+						<li class="fragment">Favors encapsulation</li>
+						<li class="fragment">Favors defining boundaries</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Cons</h1>
+					<ul>
+						<li class="fragment">Harder to maintain</li>
+						<li class="fragment">Harder to prototype<span class="fragment"> ↔ architect</span></li>
+						<li class="fragment">Slower iteration</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>How?</h1>
+					<ul>
+						<li class="fragment">Manual<span class="fragment"> + git submodules...</span></li>
+						<li class="fragment">Carthage</li>
+						<li class="fragment">CocoaPods</li>
+						<li class="fragment">Swift Package Manager</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Manual</h1>
+					<ul>
+						<li class="fragment">Completely manual (download or copy) 😐</li>
+						<li class="fragment">
+							Git submodules<br>
+							<span class="fragment">⚠️ Detached heads</span><br>
+							<span class="fragment">✅ Exact point in time</span>
+						</li>
+					</ul>
+					<p class="fragment">In both cases, manual integration</p>
+				</section>
+
+				<section>
+					<h1>Carthage</h1>
+					<ul>
+						<li class="fragment">Not centralized</li>
+						<li class="fragment">Manual steps</li>
+						<li class="fragment">More control</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>CocoaPods</h1>
+					<ul>
+						<li class="fragment">Well known</li>
+						<li class="fragment">Automated</li>
+						<li class="fragment">Less control ("blackbox")</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Swift Package Manager</h1>
+					<ul>
+						<li class="fragment">New, less support</li>
+						<li class="fragment">Server projects</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>CocoaPods 🏆</h1>
+				</section>
+
+				<section>
+					<h1>Preparation</h1>
+					<div class="fragment">
+						<small>.bash_profile / .zshrc / ...</small>
+						<pre class="join-with-previous"><code class="shell" data-trim data-noescape>
+							export GEM_HOME=$HOME/.gem
+							export PATH=$GEM_HOME/bin:$PATH
+						</code></pre>
+					</div>
+					<div class="fragment">
+						<small>Installing</small>
+						<pre class="join-with-previous"><code class="shell" data-trim data-noescape>
+							$ gem install cocoapods --user-install
+						</code></pre>
+					</div>
+				</section>
+
+				<section>
+					<h1>Basics</h1>
+					<pre class="fragment"><code class="shell" data-trim data-noescape>
+						$ pod init
+					</code></pre>
+					<pre class="fragment"><code class="shell" data-trim data-noescape>
+						$ pod install
+					</code></pre>
+					<pre class="fragment"><code class="shell" data-trim data-noescape>
+						$ pod update
+					</code></pre>
+					<pre class="fragment"><code class="shell" data-trim data-noescape>
+						$ pod outdated
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Podfile</h1>
+					<pre><code class="ruby" data-trim data-noescape>
+						platform :ios, '9.0'
+
+						target 'MyApp' do
+						  use_frameworks!
+
+						  pod 'Alamofire', '~> 4.5.0'
+
+						  target 'MyAppTests' do
+						    inherit! :search_paths
+						  end
+						end
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Semver</h1>
+					<ul>
+						<li class="fragment"><b>PATCH</b>: bugfixes, doesn't add features</li>
+						<li class="fragment"><b>MINOR</b>: new features, no breaking changes</li>
+						<li class="fragment"><b>MAJOR</b>: breaking changes</li>
+					</ul>
+					<div>
+						<p style="font-size: 1.5em">MAJOR.MINOR.PATCH</p>
+						<small class="join-with-previous"><a href="https://semver.org/">semver.org</a></small>
+					</div>
+				</section>
+
+				<section>
+					<h1>Semver</h1>
+					<ul>
+						<li class="fragment">Exact version&ensp;
+							<code class="inline">0.1</code>
+						</li>
+						<li class="fragment">Comparators&ensp;
+							<code class="inline">&gt; 0.1</code>&ensp;
+							<code class="inline">&gt;= 0.1</code>&ensp;
+							<code class="inline">&lt; 0.1</code>&ensp;
+							<code class="inline">&lt;= 0.1</code>
+						</li>
+						<li class="fragment">Optimistic comparator&ensp;
+							<code class="inline">~&gt; 0.1.2</code>&ensp;
+							<code class="inline">~&gt; 0.1</code>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Podfile.lock</h1>
+					<ul>
+						<li class="fragment">Allows pinning versions<span class="fragment"> → reproducible builds</span></li>
+						<li class="fragment">Add it to the repo</li>
+						<li class="fragment">Alternatively, add Pods directory</li>
+						<li class="fragment">Using exact versions in the Podfile is not enough</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Making a CocoaPod</h1>
+					<img src="img/xcode-create-framework.png" style="width: 50%">
+				</section>
+
+				<section>
+					<h1>Podspec</h1>
+					<pre class="fragment"><code class="shell" data-trim data-noescape>
+						$ pod spec create Lipsum
+
+						Specification created at Lipsum.podspec
+
+						$
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Podspec</h1>
+					<pre><code class="ruby" data-trim data-noescape
+												style="font-size: 0.70em; line-height: 1.30em; max-height: 100%">
+						Pod::Spec.new do |s|
+
+						  s.name         = "Lipsum"
+						  s.version      = "0.0.1"
+						  s.summary      = "Simple Lorem Ipsum generator framework example."
+						  s.description  = <<-DESC
+						    Simple Lorem Ipsum generator to support the talk Swify Framework Development for
+						    pragmatic developers.
+						                   DESC
+
+						  s.homepage     = "http://xrubio.com/talks"
+						  s.license      = { :type => "MIT", :file => "LICENSE" }
+						  s.author       = "Xavier Rubio Jansana"
+						  s.social_media_url = "http://twitter.com/teknik_tdr"
+
+						  s.platform     = :ios, "9.0"
+
+						  s.source       = { :git => "https://github.com/xrubioj/swifty-framework-Lipsum.git",
+						                     :tag => "#{s.version}" }
+						  s.source_files  = "Lipsum", "Lipsum/**/*.{h,m,swift}"
+
+						end
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Updated Podfile</h1>
+					<pre><code class="ruby" data-trim data-noescape style="font-size: 0.88em; line-height: 1.35em;">
+						platform :ios, '9.0'
+
+						target 'SampleLipsumApp' do
+						  use_frameworks!
+
+						  pod 'Lipsum', :path => '../Lipsum'
+
+						  #target 'SampleLipsumAppTests' do
+						  #  inherit! :search_paths
+						  #end
+
+						end
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Let's use it!</h1>
+					<pre><code class="shell" data-trim data-noescape>
+						$ pod install
+						Analyzing dependencies
+						Fetching podspec for `Lipsum` from `../Lipsum`
+						Downloading dependencies
+						Installing Lipsum (0.0.1)
+						Generating Pods project
+						Integrating client project
+
+						[!] Please close any current Xcode sessions and use
+						  `SampleLipsumApp.xcworkspace` for this project from now on.
+						Sending stats
+						Pod installation complete! There is 1 dependency from the
+						  Podfile and 1 total pod installed.
+					</code></pre>
+				</section>
+
+				<section>
+					<pre><code class="shell" data-trim data-noescape>
+						$ open SampleLipsumApp.xcworkspace
+					</code></pre>
+					<img src="img/xcode-project-podintegrated.png">
+				</section>
+
+				<section>
+					<h1>Hints</h1>
+					<ul>
+						<li class="fragment">Remember <code class="inline">public</code></li>
+						<li class="fragment">Development Pods</li>
+						<li class="fragment"><code class="inline">pod update</code> not needed</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Publishing</h1>
+					<ul>
+						<li class="fragment">Create framework project</li>
+						<li class="fragment">Create podspec</li>
+						<li class="fragment"><code class="inline">echo "4.0" &gt; .swift-version</code></li>
+						<li class="fragment"><code class="inline">pod lib lint</code></li>
+						<li class="fragment">Commit and push to repo</li>
+						<li class="fragment">Tag with version ("<b>0.0.1</b>") and push</li>
+						<li class="fragment"><code class="inline">pod trunk push Lipsum.podspec</code><br>
+								<code class="inline fragment">--allow-warnings</code></li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>New release</h1>
+					<ul>
+						<li class="fragment">Run tests</li>
+						<li class="fragment">Update podspec (version!)</li>
+						<li class="fragment"><code class="inline">pod lib lint</code></li>
+						<li class="fragment">Commit and push to repo</li>
+						<li class="fragment">Tag with new version ("<b>0.0.2</b>") and push</li>
+						<li class="fragment"><code class="inline">pod trunk push Lipsum.podspec</code><br>
+								<code class="inline fragment">--allow-warnings</code></li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Private Pods</h1>
+					<ul>
+						<li class="fragment">Create a git repo</li>
+						<li class="fragment">Add:
+							<code class="inline">pod repo add private-repo https://github.com/xrubioj/swifty-framework-private-repo.git</code></li>
+						<li class="fragment">Push Podspec:
+							<code class="inline">pod repo push private-repo Lipsum.podspec</code></li>
+						<li class="fragment">Update your Podfile with <code class="inline">source</code></li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Updated Podfile</h1>
+					<pre><code class="ruby" data-trim data-noescape style="font-size: 0.88em; line-height: 1.35em;">
+						platform :ios, '9.0'
+
+						source 'https://github.com/CocoaPods/Specs.git'
+						source 'https://github.com/xrubioj/swifty-framework-private-repo.git'
+
+						target 'SampleLipsumApp' do
+						  use_frameworks!
+
+						  pod 'Lipsum', '~> 0.0.1'
+
+						  #target 'SampleLipsumAppTests' do
+						  #  inherit! :search_paths
+						  #end
+
+						end
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Questions? 🤔</h1>
+				</section>
+
+				<section>
+					<h1>Thanks! 🎉</h1>
+					<p>Xavier Rubio Jansana</p>
+					<p style="font-size: 0.8em">
+						<a href="https://twitter.com/teknik_tdr"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;@teknik_tdr</a><br>
+						<a href="https://xrubio.com"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;https://xrubio.com</a><br>
+						<a href="https://github.com/xrubioj/"><i class="fa fa-github" aria-hidden="true"></i>&nbsp;https://github.com/xrubioj/</a>
+					</p>
+					<p style="line-height: 0.6em"><small>This talk is available at:</small><br>
+						<a href="https://xrubio.com/talks/talk-swifty-frameworks/" style="font-size: 0.6em">
+						https://xrubio.com/talks/talk-swifty-frameworks/</a>
+					</p>
+				</section>
+			</div>
+
+			<div class="overlay-title">
+				Swifty Framework Development for pragmatic developers
+			</div>
+		</div>
+
+		<script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'reveal.js/plugin/markdown/marked.js' },
+					{ src: 'reveal.js/plugin/markdown/markdown.js' },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

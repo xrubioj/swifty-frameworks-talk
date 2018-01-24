@@ -1,0 +1,76 @@
+/*
+
+Zenburn style from voldmar.ru (c) Vladimir Epifanov <voldmar@voldmar.ru>
+based on dark.css by Ivan Sagalaev
+
+*/
+
+mark.nohighlight {
+  background-color: inherit;
+}
+
+/* --- Strikethrough based on https://codepen.io/EdenSG/pen/jPENoE --------- */
+mark.strikethrough.fragment.visible {
+  display: inline-block;
+  position: relative;
+}
+
+mark.strikethrough.fragment.visible:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  box-shadow: 0 1px rgba(128,128,128,0.6);
+  margin-top: -0.5em;
+  background: #dcdcdc;
+  transform-origin: center left;
+  animation: strikethrough 1s cubic-bezier(.55, 0, .1, 1) 1;
+}
+
+@keyframes strikethrough {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+/* ------------------------------------------------------------------------- */
+
+//mark.grayout {
+//  background-color: inherit;
+//}
+
+.grayout .hljs,
+.grayout .hljs-keyword,
+.grayout .hljs-selector-tag,
+.grayout .hljs-tag,
+.grayout .hljs-template-tag,
+.grayout .hljs-number,
+.grayout .hljs-variable,
+.grayout .hljs-template-variable,
+.grayout .hljs-attribute,
+.grayout .hljs-literal,
+.grayout .hljs-subst,
+.grayout .hljs-title,
+.grayout .hljs-name,
+.grayout .hljs-selector-id,
+.grayout .hljs-selector-class,
+.grayout .hljs-section,
+.grayout .hljs-type,
+.grayout .hljs-symbol,
+.grayout .hljs-bullet,
+.grayout .hljs-link,
+.grayout .hljs-deletion,
+.grayout .hljs-string,
+.grayout .hljs-built_in,
+.grayout .hljs-builtin-name,
+.grayout .hljs-addition,
+.grayout .hljs-comment,
+.grayout .hljs-quote,
+.grayout .hljs-meta,
+.grayout .hljs-emphasis,
+.grayout .hljs-strong {
+  color: #dcdcdc;
+}
